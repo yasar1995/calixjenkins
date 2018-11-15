@@ -1,19 +1,20 @@
-while True:
-    try:
-        userInput = raw_input("Would you like to 'upgrade' or 'downgrade' the image: ")
-        userInput = userInput.lower();
-    except ValueError:
-        print("Sorry, I didn't understand that.")
-        continue
+def userInput
+try {
+    userInput = input(
+        id: 'Proceed1', message: 'Was this successful?', parameters: [
+        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
+        ])
+} catch(err) { // input false
+    echo "This Job has been Aborted"
+}
 
-    if userInput not in ['upgrade', 'downgrade']:
-        print("Sorry, your response must be either 'upgrade' or 'downgrade'.")
-        continue
-    else:
-        #age was successfully parsed, and we're happy with its value.
-        #we're ready to exit the loop.
-        break
-if userInput == "upgrade": 
-    print("You are upgraded")
-elif userInput == "downgrade":
-    print("You are downgraded")
+node {
+    if (userInput == true) {
+        // do something
+        echo "this was successful"
+    } else {
+        // do something else
+        echo "this was not successful"
+        currentBuild.result = 'FAILURE'
+    } 
+}
