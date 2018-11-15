@@ -3,7 +3,7 @@ public class UpgradeDowngrade
 {
 	public static void main(String[] args) throws Exception 
 	{
-	    String[] cmd = {"sudo","-S", "python", "Upgrade_Dowmgrade_PassArgument.py upgrade"};
+	    String[] cmd = {"sudo","-S", "python", "Upgrade_Downgrade_PassArgument.py upgrade"};
 	    System.out.println(runSudoCommand(cmd));
 	}
 
