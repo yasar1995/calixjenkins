@@ -1,6 +1,6 @@
 while True:
     try:
-        userInput = input("Would you like to 'upgrade' or 'downgrade' the image: ")
+        userInput = raw_input("Would you like to 'upgrade' or 'downgrade' the image: ")
         userInput = userInput.lower();
     except ValueError:
         print("Sorry, I didn't understand that.")
