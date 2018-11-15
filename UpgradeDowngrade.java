@@ -3,7 +3,7 @@ public class UpgradeDowngrade
 {
 	public static void main(String[] args) throws Exception 
 	{
-	    String[] cmd = {"sudo","-S", "python", "OriginalFlashBackup.py"};
+	    String[] cmd = {"sudo","-S", "python", "FlashRead_USBConsole_With_InterfaceName_Upgrade_And_Downgrade.py"};
 	    System.out.println(runSudoCommand(cmd));
 	}
 
