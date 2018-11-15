@@ -1,5 +1,5 @@
 import java.io.*;
-public class UbuntuReboot
+public class UpgradeDowngrade
 {
 	public static void main(String[] args) throws Exception 
 	{
