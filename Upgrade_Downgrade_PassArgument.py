@@ -50,7 +50,7 @@ def get_LANstatus():
     elif LAN == "down\n":
 	print("LAN cable not connected")
 	sys.stdout=open("output.txt","w")
-	print ("BuildNumber "+buildNumber+"||Error:Build Failed-LAN cable not connected")
+	print(buildNumber)
 	sys.stdout.close()
 	sys.exit()
     LAN_file.close()
