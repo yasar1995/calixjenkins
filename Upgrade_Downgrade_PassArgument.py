@@ -6,7 +6,6 @@ import time
 import os
 import glob
 import re
-buildNumber = re.sub(r'[-_]+', '', os.environ['BUILD_DISPLAY_NAME'])[0:12]
 from ctypes import *
 
 userInput = sys.argv[1]
@@ -50,7 +49,7 @@ def get_LANstatus():
     elif LAN == "down\n":
 	print("LAN cable not connected")
 	sys.stdout=open("output.txt","w")
-	print(buildNumber)
+	print(re.sub(r'[-_]+', '', os.environ['BUILD_DISPLAY_NAME'])[0:12])
 	sys.stdout.close()
 	sys.exit()
     LAN_file.close()
