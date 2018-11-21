@@ -11,12 +11,12 @@ from ctypes import *
 userInput = sys.argv[1]
 if userInput == "upgrade":
 	if len(os.listdir('/tftpboot/upgrade/') ) == 0:
-		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+		sys.stdout=open("output.txt","w")
 		print("Build Failed-'tftpboot/upgrade/' folder is empty")
 		sys.exit()
 elif userInput == "downgrade":
 	if len(os.listdir('/tftpboot/downgrade/') ) == 0:
-		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+		sys.stdout=open("output.txt","w")
 		print("Build Failed-'tftpboot/downgrade/' folder is empty")
 		sys.exit()
 
@@ -48,7 +48,7 @@ def get_LANstatus():
 	print("LAN cable connected")
     elif LAN == "down\n":
 	print("LAN cable not connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+	sys.stdout=open("output.txt","w")
 	print ("Build Failed-LAN cable not connected")
 	sys.stdout.close()
 	sys.exit()
@@ -94,7 +94,7 @@ def serial_ports():
             pass
     if not result:
         print("No serial devices connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+	sys.stdout=open("output.txt","w")
 	print ("Build Failed-No serial devices connected")
 	sys.stdout.close()
         sys.exit()
@@ -237,7 +237,7 @@ while usbIndex < len(usbList):
 	  print(environmentData.encode('utf-8'))
 	  if 'Flashing success!' in environmentData.encode('utf-8'):
 		print("Found Success")
-		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+		sys.stdout=open("output.txt","w")
 		print ("Flashed successfully")
 		sys.stdout.close()
 		break
