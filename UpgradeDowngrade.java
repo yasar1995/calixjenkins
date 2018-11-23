@@ -6,7 +6,7 @@ public class UpgradeDowngrade
 	    args[0] = args[0].toLowerCase();
 	    if(args[0].equals("upgrade") || args[0].equals("downgrade"))
 	    {
-	    	String[] cmd = {"sudo","-S", "python", "Upgrade_Downgrade_PassArgument.py", args[0]};
+	    	String[] cmd = {"sudo","-S", "python", "DownloadImdUpgradeDowngrade.py", args[0]};
 	    	System.out.println(runSudoCommand(cmd));
 	    }
 	}
