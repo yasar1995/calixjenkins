@@ -11,7 +11,8 @@ from urllib2 import urlopen
 import urllib
 import re
 
-open("output.txt", "w").close()
+sys.stdout=open("output.txt", "w")
+sys.stdout.close()
 	
 #Function to Download Image file if not found
 def get_image_from_server(option):
@@ -24,20 +25,9 @@ def get_image_from_server(option):
 	destfilename="/tftpboot/"+option+imagefile
 	urllib.urlretrieve (url,destfilename)
 	with open("output.txt", "a") as f:
-    		f.write("\nImage file is downloaded from"+url+" and saved in "+destfilename)
+    		f.write("Image file is downloaded from"+url+" and saved in "+destfilename)
 	return
 	
-#Function to Download Image file if not found
-def get_image_from_server(option):
-	urlpath =urlopen('http://127.0.0.1:7000')
-	string = urlpath.read().decode('utf-8')
-	pattern = re.compile('([-\w]+\.(?:img))') #the pattern actually creates duplicates in the list
-	imagefile = pattern.findall(string)
-	imagefile = imagefile[0]
-	url = "http://127.0.0.1:7000/"+imagefile
-	destfilename="/tftpboot/"+option+imagefile
-	urllib.urlretrieve (url,destfilename)
-
 #Function To Interface Name
 def get_interfaces():
     libc = CDLL('libc.so.6')
