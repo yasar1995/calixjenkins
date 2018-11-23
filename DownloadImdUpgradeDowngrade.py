@@ -12,7 +12,7 @@ import urllib
 import re
 
 
-open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w").close
+open("output.txt","w").close
 
 #Function to Download Image file if not found
 def get_image_from_server(option):
@@ -24,8 +24,8 @@ def get_image_from_server(option):
 	url = "http://127.0.0.1:7000/"+imagefile
 	destfilename="/tftpboot/"+option+imagefile
 	urllib.urlretrieve (url,destfilename)
-	with open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt", "a") as f:
-    		f.write('Image file is downloaded from'+url+' and saved in '+destfilename)
+	with open("output.txt", "a") as f:
+    		f.write('Image file is downloaded from'+url+' and saved in '+destfilename+'\n')
 	return
 
 #Function To Interface Name
@@ -54,7 +54,7 @@ def get_LANstatus():
     LAN = LAN[0]
     if LAN == "down\n":
 	print("LAN cable not connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+	sys.stdout=open("output.txt","w")
 	print ("Build Failed-LAN cable not connected")
 	sys.stdout.close()
 	sys.exit()
@@ -100,7 +100,7 @@ def serial_ports():
             pass
     if not result:
         print("No serial devices connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+	sys.stdout=open("output.txt","w")
 	print ("Build Failed-No serial devices connected")
 	sys.stdout.close()
         sys.exit()
@@ -249,8 +249,8 @@ while usbIndex < len(usbList):
 	  print(environmentData.encode('utf-8'))
 	  if 'Flashing success!' in environmentData.encode('utf-8'):
 		print("Found Success")
-		with open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt", "a") as f:
-    			f.write('\nFlashed succesfully')
+		with open("output.txt", "a") as f:
+    			f.write('Flashed succesfully')
 		break
 	  console.flushInput()
 
