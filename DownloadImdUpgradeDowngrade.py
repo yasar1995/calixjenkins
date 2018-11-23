@@ -11,8 +11,7 @@ from urllib2 import urlopen
 import urllib
 import re
 
-sys.stdout=open("output.txt","w")
-sys.stdout.close()
+open("output.txt", "w").close()
 	
 #Function to Download Image file if not found
 def get_image_from_server(option):
@@ -25,7 +24,7 @@ def get_image_from_server(option):
 	destfilename="/tftpboot/"+option+imagefile
 	urllib.urlretrieve (url,destfilename)
 	with open("output.txt", "a") as f:
-    	f.write("\nImage file is downloaded from"+url+" and saved in "+destfilename)
+    		f.write("\nImage file is downloaded from"+url+" and saved in "+destfilename)
 	return
 	
 #Function to Download Image file if not found
@@ -68,7 +67,7 @@ def get_LANstatus():
     elif LAN == "down\n":
 	print("LAN cable not connected")
 	with open("output.txt", "a") as f:
-    	f.write("Build Failed-LAN cable not connected")
+    		f.write("Build Failed-LAN cable not connected")
 	sys.exit()
     LAN_file.close()
     return
@@ -113,7 +112,7 @@ def serial_ports():
     if not result:
         print("No serial devices connected")
 	with open("output.txt", "a") as f:
-    	f.write("Build Failed-No serial devices connected")
+    		f.write("Build Failed-No serial devices connected")
         sys.exit()
     return result
 
@@ -261,7 +260,7 @@ while usbIndex < len(usbList):
 	  if 'Flashing success!' in environmentData.encode('utf-8'):
 		print("Found Success")
 		with open("output.txt", "a") as f:
-    		f.write("\nFlashed successfully")
+    			f.write("\nFlashed successfully")
 		break
 	  console.flushInput()
 
