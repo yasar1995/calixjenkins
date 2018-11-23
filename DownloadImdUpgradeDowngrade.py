@@ -11,6 +11,9 @@ from urllib2 import urlopen
 import urllib
 import re
 
+sys.stdout=open("output.txt","w")
+sys.stdout.close()
+	
 #Function to Download Image file if not found
 def get_image_from_server(option):
 	urlpath =urlopen('http://127.0.0.1:7000')
@@ -21,23 +24,10 @@ def get_image_from_server(option):
 	url = "http://127.0.0.1:7000/"+imagefile
 	destfilename="/tftpboot/"+option+imagefile
 	urllib.urlretrieve (url,destfilename)
-	print("Imgae file is downloaded from "+url+" and saved in "+destfilename)
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
+	with open("output.txt", "a") as f:
+    	f.write("\nImage file is downloaded from"+url+" and saved in "+destfilename)
 	return
-
-#userInput = sys.argv[1]
-#if userInput == "upgrade":
-#	if len(os.listdir('/tftpboot/upgrade/') ) == 0:
-#		get_image_from_server("upgrade/")
-#		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
-#		print("Since 'tftpboot/upgrade/' folder is empty\n image is downloaded from server and process continued")
-#		
-#elif userInput == "downgrade":
-#	if len(os.listdir('/tftpboot/downgrade/') ) == 0:
-#		get_image_from_server("downgrade/")
-#		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
-#		print("since 'tftpboot/downgrade/' folder is empty\n image is downloaded from server and process continued")
-		
+	
 #Function to Download Image file if not found
 def get_image_from_server(option):
 	urlpath =urlopen('http://127.0.0.1:7000')
@@ -77,9 +67,8 @@ def get_LANstatus():
 	print("LAN cable connected")
     elif LAN == "down\n":
 	print("LAN cable not connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
-	print ("Build Failed-LAN cable not connected")
-	sys.stdout.close()
+	with open("output.txt", "a") as f:
+    	f.write("Build Failed-LAN cable not connected")
 	sys.exit()
     LAN_file.close()
     return
@@ -123,9 +112,8 @@ def serial_ports():
             pass
     if not result:
         print("No serial devices connected")
-	sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
-	print ("Build Failed-No serial devices connected")
-	sys.stdout.close()
+	with open("output.txt", "a") as f:
+    	f.write("Build Failed-No serial devices connected")
         sys.exit()
     return result
 
@@ -272,9 +260,8 @@ while usbIndex < len(usbList):
 	  print(environmentData.encode('utf-8'))
 	  if 'Flashing success!' in environmentData.encode('utf-8'):
 		print("Found Success")
-		sys.stdout=open("/home/yasar/Desktop/JenkinsReboot/YasarWorkout/output.txt","w")
-		print ("Flashed successfully")
-		sys.stdout.close()
+		with open("output.txt", "a") as f:
+    		f.write("\nFlashed successfully")
 		break
 	  console.flushInput()
 
