@@ -112,7 +112,7 @@ def serial_ports():
     if not result:
         print("No serial devices connected")
 	with open("output.txt", "a") as f:
-    		f.write("Build Failed-No serial devices connected")
+    		f.write("Build Failed-No serial devices connected\nConnect and try")
         sys.exit()
     return result
 
